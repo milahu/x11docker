@@ -24,6 +24,8 @@ done
 . lib/usage.sh
 . lib/license.sh
 
+. lib/fsed1file.sh # template processor
+
 #### messages
 . lib/alertbox.sh
 . lib/debugnote.sh
