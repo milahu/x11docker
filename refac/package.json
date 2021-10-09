@@ -1,0 +1,8 @@
+{
+  "name": "refac",
+  "version": "1.0.0",
+  "dependencies": {
+    "tree-sitter": "*",
+    "tree-sitter-bash": "github:tree-sitter/tree-sitter-bash"
+  }
+}
