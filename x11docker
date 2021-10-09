@@ -14,10 +14,12 @@
 Version="6.10.0"
 
 # --enforce-i: Enforce running in interactive mode to allow commands tty and weston-launch in special setups.
-grep -q -- "--enforce-i" <<< "$*" && case $- in
-  *i*) set +H ;;
-  *)   exec bash --noprofile --norc --noediting -i -- "$0" "$@" ;;
-esac
+for arg in "$@"; do
+  if [ "$arg" = "--enforce-i" ]; then
+    echo "forcing interactive mode"
+    exec bash --noprofile --norc --noediting -i -- "$0" "$@"
+  fi
+done
 
 . lib/usage.sh
 . lib/license.sh
