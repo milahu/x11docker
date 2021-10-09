@@ -39,15 +39,7 @@ $Message" | gxmessage -file - -default okay ||:
     }
   } || {
     [ -n "$Passwordterminal" ] && [ "$Passwordterminal" != "eval" ] && [ -e "$Cachefolder" ] && {
-      mkfile $Cachefolder/message
-      echo "#! /usr/bin/env bash
-echo '$Title
-
-$Message
-(Press any key to close window)'
-read -n1
-:
-" >> $Cachefolder/message
+      fsed1file "lib/alertbox.tpl.sh" "^#%TITLE_MESSAGE$" "$Title"$'\n\n'"$Message" > $Cachefolder/message
       $Passwordterminal /usr/bin/env bash $Cachefolder/message
     }
   } || {
